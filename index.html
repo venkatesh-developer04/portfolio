@@ -1,346 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="assets/images/banner/vk_favicon.ico" type="image/x-icon" />
-    <title>VENKATESH | Portfolio & CV - Pondicherry Developer</title>
-    <meta name="keywords" content="portfolio, cv, resume, freelancer, photographer, developer, html, bootstrap, scss" />
-    <meta name="description" content="Personal Portfolio & CV" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/fonts/css/all.min.css" />
-    <link rel="stylesheet" href="assets/fonts/css/tabler-icons.min.css" />
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="assets/css/nice-select.css" />
-    <link rel="stylesheet" href="assets/css/odometer.css" />
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-    <link rel="stylesheet" href="assets/css/rtl-version.css" />
-    <link rel="stylesheet" href="assets/css/light-mode.css" />
-    <link rel="stylesheet" href="assets/css/template-settings.css" />
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <header class="header">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="main-header__menu-box">
-                <nav class="navbar p-0">
-                  <div class="navbar-logo">
-                    <a href="index.html"
-                      ><img src="assets/images/banner/vk_logo.svg" alt="venkatesh logo" style="width: 60px" class="img-fluid logo-ch" />
-                      <h6 class="secondary-text">VENKATESH</h6></a
-                    >
+<head>
+  <!-- Basic -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title (60 chars max – SEO optimized) -->
+  <title>Venkatesh | Full Stack Web Developer Portfolio & CV</title>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://venkatesh-developer04.github.io/portfolio/" />
+
+  <!-- SEO Meta -->
+  <meta name="description"
+    content="Venkatesh is a Full Stack Web Developer from Pondicherry specializing in modern web applications, UI/UX design, React, and scalable solutions. View portfolio, projects, and CV." />
+  <meta name="keywords"
+    content="Venkatesh developer, full stack developer, web developer portfolio, React developer, UI UX developer, frontend developer, Pondicherry developer, JavaScript developer" />
+  <meta name="author" content="Venkatesh" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/banner/vk_favicon.ico" type="image/x-icon">
+
+  <!-- Open Graph (Facebook / LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Venkatesh | Full Stack Web Developer Portfolio">
+  <meta property="og:description"
+    content="Explore Venkatesh’s professional portfolio, projects, skills, and CV. Specialized in modern full stack web development and UI/UX." />
+  <meta property="og:url" content="https://venkatesh-developer04.github.io/portfolio/" />
+  <meta property="og:image"
+    content="https://venkatesh-developer04.github.io/portfolio/assets/images/banner/vk_logo.svg" />
+  <meta property="og:site_name" content="Venkatesh Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Venkatesh | Full Stack Web Developer Portfolio">
+  <meta name="twitter:description"
+    content="Professional portfolio of Venkatesh – Full Stack Web Developer specializing in modern, scalable web applications." />
+  <meta name="twitter:image"
+    content="https://venkatesh-developer04.github.io/portfolio/assets/images/banner/vk_logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:wght@100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/css/all.min.css">
+  <link rel="stylesheet" href="assets/fonts/css/tabler-icons.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/odometer.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/rtl-version.css">
+  <link rel="stylesheet" href="assets/css/light-mode.css">
+  <link rel="stylesheet" href="assets/css/template-settings.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Venkatesh",
+    "url": "https://venkatesh-developer04.github.io/portfolio/",
+    "jobTitle": "Full Stack Web Developer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pondicherry",
+      "addressCountry": "India"
+    },
+    "sameAs": [
+      "https://github.com/venkatesh-developer04",
+      "https://www.linkedin.com/in/iamvnki"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="main-header__menu-box">
+              <nav class="navbar p-0">
+                <div class="navbar-logo">
+                  <a href="index.html"><img src="assets/images/banner/vk_logo.svg" alt="venkatesh logo"
+                      style="width: 60px" class="img-fluid logo-ch" />
+                    <h6 class="secondary-text">VENKATESH</h6>
+                  </a>
+                </div>
+                <div class="navbar__menu-wrapper">
+                  <div class="navbar__menu d-none d-xl-block">
+                    <ul class="navbar__list">
+                      <li class="navbar__item nav-fade"><a href="#">Home</a></li>
+                      <li class="navbar__item nav-fade"><a href="#aboutSec">About</a></li>
+                      <li class="navbar__item nav-fade"><a href="#portfolioSec">Portfolio</a></li>
+                    </ul>
                   </div>
-                  <div class="navbar__menu-wrapper">
-                    <div class="navbar__menu d-none d-xl-block">
-                      <ul class="navbar__list">
-                        <li class="navbar__item nav-fade"><a href="#">Home</a></li>
-                        <li class="navbar__item nav-fade"><a href="#aboutSec">About</a></li>
-                        <li class="navbar__item nav-fade"><a href="#portfolioSec">Portfolio</a></li>
-                      </ul>
-                    </div>
+                </div>
+                <div class="navbar__options">
+                  <div class="navbar__mobile-options d-none d-sm-block">
+                    <a href="https://wa.me/917548879400" target="_blank" class="btn-primary">
+                      <span class="btn-animated-text" data-text="contact us">Contact Us</span>
+                      <span class="btn-icon"><i class="ph ph-arrow-up-right"></i><i
+                          class="ph ph-arrow-up-right"></i></span>
+                    </a>
                   </div>
-                  <div class="navbar__options">
-                    <div class="navbar__mobile-options d-none d-sm-block">
-                      <a href="https://wa.me/917548879400" target="_blank" class="btn-primary">
-                        <span class="btn-animated-text" data-text="contact us">Contact Us</span>
-                        <span class="btn-icon"><i class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span>
-                      </a>
-                    </div>
-                    <button class="open-offcanvas-nav d-flex d-xl-none" aria-label="toggle mobile menu" title="open offcanvas menu">
-                      <span class="icon-bar top-bar"></span>
-                      <span class="icon-bar middle-bar"></span>
-                      <span class="icon-bar bottom-bar"></span>
-                    </button>
-                  </div>
-                </nav>
-              </div>
+                  <button class="open-offcanvas-nav d-flex d-xl-none" aria-label="toggle mobile menu"
+                    title="open offcanvas menu">
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
+                  </button>
+                </div>
+              </nav>
             </div>
           </div>
         </div>
-      </header>
-      <div class="mobile-menu d-block d-xxl-none">
-        <nav class="mobile-menu__wrapper">
-          <div class="mobile-menu__header nav-fade">
-            <div class="logo">
-              <a href="index.html" aria-label="home page" title="logo"><img src="assets/images/logo.png" alt="Image" class="logo-ch" /></a>
-            </div>
-            <button aria-label="close mobile menu" class="close-mobile-menu"><i class="ph ph-x"></i></button>
-          </div>
-          <div class="mobile-menu__list"></div>
-          <div class="mobile-menu__cta d-block d-md-none nav-fade">
-            <a href="#contactSec" class="btn-primary"
-              ><span class="btn-animated-text" data-text="contact us">Contact Us</span><span class="btn-icon"><i class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span
-            ></a>
-          </div>
-          <div class="mobile-menu__social social nav-fade">
-            <a href="https://www.linkedin.com/" target="_blank" aria-label="share us on linkedin" title="linkedin"><i class="fa-brands fa-linkedin"></i></a><a href="https://dribbble.com/" target="_blank" aria-label="share us on dribble" title="dribble"><i class="fa-solid fa-basketball"></i></a><a href="https://x.com/" target="_blank" aria-label="share us on twitter" title="twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="https://www.behance.net/" target="_blank" aria-label="share us on vimeo" title="vimeo"><i class="fa-brands fa-behance"></i></a>
-          </div>
-        </nav>
       </div>
-      <div class="mobile-menu__backdrop"></div>
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <section class="hero-two">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="hero-two__wrapper">
-                    <div class="row">
-                      <div class="col-12 col-md-7 col-lg-7 col-xl-6">
-                        <div class="hero-two__inner">
-                          <div class="hero-two__content fade-up">
-                            <span class="tertiary-text text-uppercase sub-title fw-3 neutral-top">HOWDY! <img src="assets/images/hand.png" alt="Image" /> I'M VENKATESH</span>
-                            <h1 class="title-xl title-animation fw-7 text-uppercase mt-20">Web & Odoo <span class="secondary-text">Developer</span></h1>
-                            <p class="text-xl primary-text mt-20">Web and Odoo developer with experience in ERP customization, workflow automation, QWeb reports, and building responsive, user-friendly web interfaces.</p>
-                            <div class="hero__two-cta mt-40">
-                              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=venkateshseenu45@gmail.com&su=Job%20Inquiry&body=Hello%20Venkatesh" class="btn--secondary" title="hire me" aria-label="hire me">
-                                <span class="btn-animated-text" data-text="Hire Me!">Hire Me!</span>
-                              </a>
-                              <a href="./assets/images/appointment-bg.png" class="btn--tertiary" title="download cv" aria-label="download cv" download>
-                                <span class="btn-animated-text" data-text="Download CV">Download CV</span>
-                              </a>
-                            </div>
+    </header>
+    <div class="mobile-menu d-block d-xxl-none">
+      <nav class="mobile-menu__wrapper">
+        <div class="mobile-menu__header nav-fade">
+          <div class="logo">
+            <a href="index.html" aria-label="home page" title="logo"><img src="assets/images/logo.png" alt="Image"
+                class="logo-ch" /></a>
+          </div>
+          <button aria-label="close mobile menu" class="close-mobile-menu"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="mobile-menu__list"></div>
+        <div class="mobile-menu__cta d-block d-md-none nav-fade">
+          <a href="#contactSec" class="btn-primary"><span class="btn-animated-text" data-text="contact us">Contact
+              Us</span><span class="btn-icon"><i class="ph ph-arrow-up-right"></i><i
+                class="ph ph-arrow-up-right"></i></span></a>
+        </div>
+        <div class="mobile-menu__social social nav-fade">
+          <a href="https://www.linkedin.com/" target="_blank" aria-label="share us on linkedin" title="linkedin"><i
+              class="fa-brands fa-linkedin"></i></a><a href="https://dribbble.com/" target="_blank"
+            aria-label="share us on dribble" title="dribble"><i class="fa-solid fa-basketball"></i></a><a
+            href="https://x.com/" target="_blank" aria-label="share us on twitter" title="twitter"><i
+              class="fa-brands fa-x-twitter"></i></a><a href="https://www.behance.net/" target="_blank"
+            aria-label="share us on vimeo" title="vimeo"><i class="fa-brands fa-behance"></i></a>
+        </div>
+      </nav>
+    </div>
+    <div class="mobile-menu__backdrop"></div>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <section class="hero-two">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="hero-two__wrapper">
+                  <div class="row">
+                    <div class="col-12 col-md-7 col-lg-7 col-xl-6">
+                      <div class="hero-two__inner">
+                        <div class="hero-two__content fade-up">
+                          <span class="tertiary-text text-uppercase sub-title fw-3 neutral-top">HOWDY! <img
+                              src="assets/images/hand.png" alt="Image" /> I'M VENKATESH</span>
+                          <h1 class="title-xl title-animation fw-7 text-uppercase mt-20">Web & Odoo <span
+                              class="secondary-text">Developer</span></h1>
+                          <p class="text-xl primary-text mt-20">Web and Odoo developer with experience in ERP
+                            customization, workflow automation, QWeb reports, and building responsive, user-friendly web
+                            interfaces.</p>
+                          <div class="hero__two-cta mt-40">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=venkateshseenu45@gmail.com&su=Job%20Inquiry&body=Hello%20Venkatesh"
+                              class="btn--secondary" title="hire me" aria-label="hire me">
+                              <span class="btn-animated-text" data-text="Hire Me!">Hire Me!</span>
+                            </a>
+                            <a href="./assets/images/appointment-bg.png" class="btn--tertiary" title="download cv"
+                              aria-label="download cv" download>
+                              <span class="btn-animated-text" data-text="Download CV">Download CV</span>
+                            </a>
                           </div>
-                          <div class="hero-two__group mt-5">
-                            <div class="hero-two__left fade-up">
-                              <div class="right-thumb">
-                                <div class="btn-wrapper">
-                                  <a href="our-projects.html" class="btn-anim"><i class="ph ph-arrow-up-right"></i> View Works <span></span></a>
-                                </div>
+                        </div>
+                        <div class="hero-two__group mt-5">
+                          <div class="hero-two__left fade-up">
+                            <div class="right-thumb">
+                              <div class="btn-wrapper">
+                                <a href="our-projects.html" class="btn-anim"><i class="ph ph-arrow-up-right"></i> View
+                                  Works <span></span></a>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-12">
-                        <div class="hero-two-thumb fade-up" data-delay="200"><img src="assets/images/banner/VENKATESH-PORTFOLIO.webp" alt="VENKATESH Portfolio" /><span></span></div>
+                    </div>
+                    <div class="col-xl-6 col-12">
+                      <div class="hero-two-thumb fade-up" data-delay="200"><img
+                          src="assets/images/banner/VENKATESH-PORTFOLIO.webp" alt="VENKATESH Portfolio" /><span></span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <section class="marquee marquee-tertiary-bg">
-            <div class="marquee__inner">
-              <div class="marquee__slider">
-                <div class="marquee__single stroke-text">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">WEB DEVELOPER <span>-</span></a>
-                  </h4>
+          </div>
+        </section>
+        <section class="marquee marquee-tertiary-bg">
+          <div class="marquee__inner">
+            <div class="marquee__slider">
+              <div class="marquee__single stroke-text">
+                <h4 class="title-lg">
+                  <a href="our-services.html">WEB DEVELOPER <span>-</span></a>
+                </h4>
+              </div>
+              <div class="marquee__single">
+                <h4 class="title-lg">
+                  <a href="our-services.html">ODOO DEVELOPER <span>-</span></a>
+                </h4>
+              </div>
+              <div class="marquee__single">
+                <h4 class="title-lg">
+                  <a href="our-services.html">WEB DESIGN <span>-</span></a>
+                </h4>
+              </div>
+            </div>
+            <div class="marquee__slider">
+              <div class="marquee__single stroke-text">
+                <h4 class="title-lg">
+                  <a href="our-services.html">WEB DEVELOPER <span>-</span></a>
+                </h4>
+              </div>
+              <div class="marquee__single">
+                <h4 class="title-lg">
+                  <a href="our-services.html">ODOO DEVELOPER <span>-</span></a>
+                </h4>
+              </div>
+              <div class="marquee__single">
+                <h4 class="title-lg">
+                  <a href="our-services.html">WEB DESIGN <span>-</span></a>
+                </h4>
+              </div>
+            </div>
+            <div class="marquee__slider">
+              <div class="marquee__single stroke-text">
+                <h4 class="title-lg">
+                  <a href="our-services.html">WEB DEVELOPER <span>-</span></a>
+                </h4>
+              </div>
+              <div class="marquee__single">
+                <h4 class="title-lg">
+                  <a href="our-services.html">ODOO DEVELOPER <span>-</span></a>
+                </h4>
+              </div>
+              <div class="marquee__single">
+                <h4 class="title-lg">
+                  <a href="our-services.html">WEB DESIGN <span>-</span></a>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="about pt-4" id="aboutSec">
+          <div class="container">
+            <div class="row gutter-40 hero-four">
+              <div class="col-12 col-md-6">
+                <div class="about__intro fade-up">
+                  <span class="tertiary-text text-uppercase sub-title fw-6 neutral-top">About Us</span>
+                  <h4 class="title-animation mt-16">Hi, I'm Venkatesh, a Dedicated Web and Odoo Developer with hands-on
+                    experience in ERP customization, workflow automation, and responsive front-end development. Over the
+                    years at <a href="https://raiseaticket.com/" target="_blank" rel="noopener noreferrer">Outrise
+                      Technologies Pvt. Ltd</a>.,</h4>
                 </div>
-                <div class="marquee__single">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">ODOO DEVELOPER <span>-</span></a>
-                  </h4>
-                </div>
-                <div class="marquee__single">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">WEB DESIGN <span>-</span></a>
-                  </h4>
+                <div class="about__content fade-up mt-5" data-delay="300">
+                  <p class="primary-text neutral-top text-xl">contributed to both Odoo ERP implementations and web
+                    development projects supporting Fonicom Limited. Experienced in customizing business modules,
+                    creating advanced reports, managing access controls, and delivering user-friendly web interfaces.
+                  </p>
+                  <p class="primary-text text-xl mt-25">Strong ability to understand client requirements and transform
+                    them into scalable, efficient technical solutions.</p>
+                  <div class="about__content-cta mt-40">
+                    <a href="about-us.html" class="btn-primary"><span class="btn-animated-text"
+                        data-text="About Us">About Us</span><span class="btn-icon"><i
+                          class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span></a>
+                  </div>
                 </div>
               </div>
-              <div class="marquee__slider">
-                <div class="marquee__single stroke-text">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">WEB DEVELOPER <span>-</span></a>
-                  </h4>
-                </div>
-                <div class="marquee__single">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">ODOO DEVELOPER <span>-</span></a>
-                  </h4>
-                </div>
-                <div class="marquee__single">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">WEB DESIGN <span>-</span></a>
-                  </h4>
-                </div>
-              </div>
-              <div class="marquee__slider">
-                <div class="marquee__single stroke-text">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">WEB DEVELOPER <span>-</span></a>
-                  </h4>
-                </div>
-                <div class="marquee__single">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">ODOO DEVELOPER <span>-</span></a>
-                  </h4>
-                </div>
-                <div class="marquee__single">
-                  <h4 class="title-lg">
-                    <a href="our-services.html">WEB DESIGN <span>-</span></a>
-                  </h4>
+              <div class="col-md-4 mx-auto d-md-block d-none">
+                <div class="hero-two__group mt-5">
+                  <div class="hero-two__left fade-up">
+                    <div class="left-thumb">
+                      <a href="our-projects.html"><img src="assets/images/banner/text_vector.webp" alt="Image" /></a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </section>
-          <section class="about pt-4" id="aboutSec">
-            <div class="container">
-              <div class="row gutter-40 hero-four">
-                <div class="col-12 col-md-6">
-                  <div class="about__intro fade-up">
-                    <span class="tertiary-text text-uppercase sub-title fw-6 neutral-top">About Us</span>
-                    <h4 class="title-animation mt-16">Hi, I'm Venkatesh, a Dedicated Web and Odoo Developer with hands-on experience in ERP customization, workflow automation, and responsive front-end development. Over the years at <a href="https://raiseaticket.com/" target="_blank" rel="noopener noreferrer">Outrise Technologies Pvt. Ltd</a>.,</h4>
-                  </div>
-                  <div class="about__content fade-up mt-5" data-delay="300">
-                    <p class="primary-text neutral-top text-xl">contributed to both Odoo ERP implementations and web development projects supporting Fonicom Limited. Experienced in customizing business modules, creating advanced reports, managing access controls, and delivering user-friendly web interfaces.</p>
-                    <p class="primary-text text-xl mt-25">Strong ability to understand client requirements and transform them into scalable, efficient technical solutions.</p>
-                    <div class="about__content-cta mt-40">
-                      <a href="about-us.html" class="btn-primary"
-                        ><span class="btn-animated-text" data-text="About Us">About Us</span><span class="btn-icon"><i class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 mx-auto d-md-block d-none">
-                  <div class="hero-two__group mt-5">
-                    <div class="hero-two__left fade-up">
-                      <div class="left-thumb">
-                        <a href="our-projects.html"><img src="assets/images/banner/text_vector.webp" alt="Image" /></a>
-                      </div>
-                    </div>
+          </div>
+        </section>
+        <div class="skill-two pt-4 scale-wrapper" id="portfolioSec">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="section__header text-center mb-60 fade-up">
+                  <span class="sub-title tertiary-text text-uppercase neutral-top fw-6">Visit my skills & RESUME</span>
+                  <h2 class="title-animation fw-6 mt-16">Professional Timeline and Milestones</h2>
+                  <p class="primary-text mt-16">A detailed journey of my experience, skills, education, and career
+                    achievements to date.</p>
+                  <div class="skill__tab-btns mt-40">
+                    <button data-target="#educationTwo" class="skill-tab-btn active">Education</button>
+                    <span></span>
+                    <button data-target="#skillTwo" class="skill-tab-btn">Skills</button>
+                    <button data-target="#experienceTwo" class="skill-tab-btn">Experience</button>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <div class="skill-two pt-4 scale-wrapper" id="portfolioSec">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section__header text-center mb-60 fade-up">
-                    <span class="sub-title tertiary-text text-uppercase neutral-top fw-6">Visit my skills & RESUME</span>
-                    <h2 class="title-animation fw-6 mt-16">Professional Timeline and Milestones</h2>
-                    <p class="primary-text mt-16">A detailed journey of my experience, skills, education, and career achievements to date.</p>
-                    <div class="skill__tab-btns mt-40">
-                      <button data-target="#educationTwo" class="skill-tab-btn active">Education</button>
-                      <span></span>
-                      <button data-target="#skillTwo" class="skill-tab-btn">Skills</button>
-                      <button data-target="#experienceTwo" class="skill-tab-btn">Experience</button>
+            <div class="row">
+              <div class="col-12">
+                <div class="skill-two__inner">
+                  <div class="skill-two__item" id="educationTwo">
+                    <div class="row gutter-24">
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>National University</p>
+                            <p>2019 - 2020</p>
+                          </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">Diploma in Computer</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>Wealcoder</p>
+                            <p>2016 - 2020</p>
+                          </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">Wordpress Development</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>Bluebush Designs</p>
+                            <p>2017 - 2018</p>
+                          </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">Web Design Course</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>Larsen & Toubro</p>
+                            <p>2010 - 2012</p>
+                          </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">University of California</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="skill-two__inner">
-                    <div class="skill-two__item" id="educationTwo">
-                      <div class="row gutter-24">
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>National University</p>
-                              <p>2019 - 2020</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">Diploma in Computer</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
+                  <div class="skill-two__item" id="skillTwo">
+                    <div class="row gutter-24">
+                      <div class="col-12">
+                        <img src="" alt="skills" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-two__item" id="experienceTwo">
+                    <div class="row gutter-24">
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>National University</p>
+                            <p>2019 - 2020</p>
                           </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>Wealcoder</p>
-                              <p>2016 - 2020</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">Wordpress Development</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>Bluebush Designs</p>
-                              <p>2017 - 2018</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">Web Design Course</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>Larsen & Toubro</p>
-                              <p>2010 - 2012</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">University of California</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">Diploma in Computer</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="skill-two__item" id="skillTwo">
-                      <div class="row gutter-24">
-                        <div class="col-12">
-                          <img src="" alt="skills" />
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>Wealcoder</p>
+                            <p>2016 - 2020</p>
+                          </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">Wordpress Development</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="skill-two__item" id="experienceTwo">
-                      <div class="row gutter-24">
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>National University</p>
-                              <p>2019 - 2020</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">Diploma in Computer</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>Bluebush Designs</p>
+                            <p>2017 - 2018</p>
+                          </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">Web Design Course</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
                           </div>
                         </div>
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>Wealcoder</p>
-                              <p>2016 - 2020</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">Wordpress Development</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
+                      </div>
+                      <div class="col-12 col-lg-6">
+                        <div class="skill-two__single scale-up">
+                          <div class="skill-two__intro">
+                            <p>Larsen & Toubro</p>
+                            <p>2010 - 2012</p>
                           </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>Bluebush Designs</p>
-                              <p>2017 - 2018</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">Web Design Course</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                          <div class="skill-two__single scale-up">
-                            <div class="skill-two__intro">
-                              <p>Larsen & Toubro</p>
-                              <p>2010 - 2012</p>
-                            </div>
-                            <div class="skill-two__content">
-                              <h5 class="fw-6">University of California</h5>
-                              <p class="primary-text mt-16">Owing to advancements in product designer technologies, into greater popularity in the past few years.</p>
-                            </div>
+                          <div class="skill-two__content">
+                            <h5 class="fw-6">University of California</h5>
+                            <p class="primary-text mt-16">Owing to advancements in product designer technologies, into
+                              greater popularity in the past few years.</p>
                           </div>
                         </div>
                       </div>
@@ -350,101 +436,116 @@
               </div>
             </div>
           </div>
-          <footer class="footer-two">
-            <div class="container">
-              <div class="row align-items-center justify-content-between">
-                <div class="col-12 col-lg-5 col-xl-4">
-                  <div class="footer-two__intro fade-right">
-                    <div class="logo">
-                      <a href="index.html"><img src="assets/images/logo.png" alt="Image" class="logo-ch" /></a>
-                    </div>
-                    <div class="mt-20"><p class="neutral-text text-md">Current enables our entire team to align, share every day. Weekly Drops momentum happening and product scales.</p></div>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-2 col-xl-3 d-none">
-                  <div class="footer-two__nav fade-right" data-delay="200">
-                    <ul>
-                      <li><a href="about-us.html">About</a></li>
-                      <li><a href="our-services.html" class="footer-nav-active">Services</a></li>
-                      <li><a href="our-projects.html">Projects</a></li>
-                      <li><a href="news.html">News</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-5 col-xl-5">
-                  <div class="footer-two__text fade-right" data-delay="400">
-                    <h3 class="pulse-text title-xxl">LET'S TALK</h3>
-                    <h3 class="pulse-text-light title-xxl">LET'S TALK</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="footer__copyright">
-              <div class="container">
-                <div class="row align-items-center gutter-24">
-                  <div class="col-12 col-lg-4">
-                    <div class="footer__copyright-left">
-                      <p><i class="ph ph-copyright"></i><span id="copyrightYear"></span><a href="index.html">Venkatesh </a>. All rights reserved.</p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-4">
-                    <div class="social justify-content-center">
-                      <a href="https://www.linkedin.com/" target="_blank" aria-label="share us on linkedin" title="linkedin"><i class="fa-brands fa-linkedin"></i></a><a href="https://dribbble.com/" target="_blank" aria-label="share us on dribble" title="dribble"><i class="fa-solid fa-basketball"></i></a><a href="https://x.com/" target="_blank" aria-label="share us on twitter" title="twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="https://www.behance.net/" target="_blank" aria-label="share us on vimeo" title="vimeo"><i class="fa-brands fa-behance"></i></a>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-4">
-                    <div class="footer__copyright-right">
-                      <p>Designed By <a target="_blank" href="https://www.instagram.com/_webnito/">webnito</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
         </div>
+        <footer class="footer-two">
+          <div class="container">
+            <div class="row align-items-center justify-content-between">
+              <div class="col-12 col-lg-5 col-xl-4">
+                <div class="footer-two__intro fade-right">
+                  <div class="logo">
+                    <a href="index.html"><img src="assets/images/logo.png" alt="Image" class="logo-ch" /></a>
+                  </div>
+                  <div class="mt-20">
+                    <p class="neutral-text text-md">Current enables our entire team to align, share every day. Weekly
+                      Drops momentum happening and product scales.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-2 col-xl-3 d-none">
+                <div class="footer-two__nav fade-right" data-delay="200">
+                  <ul>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="our-services.html" class="footer-nav-active">Services</a></li>
+                    <li><a href="our-projects.html">Projects</a></li>
+                    <li><a href="news.html">News</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-12 col-lg-5 col-xl-5">
+                <div class="footer-two__text fade-right" data-delay="400">
+                  <h3 class="pulse-text title-xxl">LET'S TALK</h3>
+                  <h3 class="pulse-text-light title-xxl">LET'S TALK</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <div class="container">
+              <div class="row align-items-center gutter-24">
+                <div class="col-12 col-lg-4">
+                  <div class="footer__copyright-left">
+                    <p><i class="ph ph-copyright"></i><span id="copyrightYear"></span><a href="index.html">Venkatesh
+                      </a>. All rights reserved.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="social justify-content-center">
+                    <a href="https://www.linkedin.com/" target="_blank" aria-label="share us on linkedin"
+                      title="linkedin"><i class="fa-brands fa-linkedin"></i></a><a href="https://dribbble.com/"
+                      target="_blank" aria-label="share us on dribble" title="dribble"><i
+                        class="fa-solid fa-basketball"></i></a><a href="https://x.com/" target="_blank"
+                      aria-label="share us on twitter" title="twitter"><i class="fa-brands fa-x-twitter"></i></a><a
+                      href="https://www.behance.net/" target="_blank" aria-label="share us on vimeo" title="vimeo"><i
+                        class="fa-brands fa-behance"></i></a>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="footer__copyright-right">
+                    <p>Designed By <a target="_blank" href="https://www.instagram.com/_webnito/">webnito</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
-      <div class="color-palate">
-        <div class="color-icon">
-          <button class="open-color"><i class="ti ti-settings-filled"></i></button><button class="close-color"><i class="ti ti-x"></i></button>
-        </div>
-        <div class="color-palate-inner">
-          <div class="group">
-            <h6 class="not-cursor">Color Mode</h6>
-            <ul class="color-version">
-              <li class="active cursor-pointer dark-mode">Dark</li>
-              <li class="box cursor-pointer light-mode">Light</li>
-            </ul>
-          </div>
-          <div class="group">
-            <h6 class="not-cursor">Direction</h6>
-            <ul class="rtl-version">
-              <li class="active cursor-pointer ltr-yes">LTR</li>
-              <li class="cursor-pointer ltr-no">RTL</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mouseCursor cursor-outer"></div>
-      <div class="mouseCursor cursor-inner"></div>
-      <button class="progress-wrap" aria-label="scroll indicator" title="back to top">
-        <span></span><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /></svg>
-      </button>
     </div>
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/viewport.jquery.js"></script>
-    <script src="assets/js/odometer.min.js"></script>
-    <script src="assets/js/vanilla-tilt.min.js"></script>
-    <script src="assets/js/phosphor-icon.js"></script>
-    <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/SplitText.min.js"></script>
-    <script src="assets/js/ScrollToPlugin.min.js"></script>
-    <script src="assets/js/ScrollSmoother.min.js"></script>
-    <script src="assets/js/gsap.min.js"></script>
-    <script src="assets/js/chroma.min.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+    <div class="color-palate">
+      <div class="color-icon">
+        <button class="open-color"><i class="ti ti-settings-filled"></i></button><button class="close-color"><i
+            class="ti ti-x"></i></button>
+      </div>
+      <div class="color-palate-inner">
+        <div class="group">
+          <h6 class="not-cursor">Color Mode</h6>
+          <ul class="color-version">
+            <li class="active cursor-pointer dark-mode">Dark</li>
+            <li class="box cursor-pointer light-mode">Light</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h6 class="not-cursor">Direction</h6>
+          <ul class="rtl-version">
+            <li class="active cursor-pointer ltr-yes">LTR</li>
+            <li class="cursor-pointer ltr-no">RTL</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mouseCursor cursor-outer"></div>
+    <div class="mouseCursor cursor-inner"></div>
+    <button class="progress-wrap" aria-label="scroll indicator" title="back to top">
+      <span></span><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </button>
+  </div>
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <script src="assets/js/viewport.jquery.js"></script>
+  <script src="assets/js/odometer.min.js"></script>
+  <script src="assets/js/vanilla-tilt.min.js"></script>
+  <script src="assets/js/phosphor-icon.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script src="assets/js/SplitText.min.js"></script>
+  <script src="assets/js/ScrollToPlugin.min.js"></script>
+  <script src="assets/js/ScrollSmoother.min.js"></script>
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/chroma.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
 </html>
