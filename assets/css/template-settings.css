@@ -11,7 +11,7 @@
   transform: translateY(-50%);
   z-index: 999;
   width: 250px;
-  background-color: #000000;
+  background-color: var(--white);
   text-align: center;
   padding: 60px 20px;
   box-shadow: 0px 0px 2px #c6e757;
@@ -32,8 +32,8 @@
   align-items: center;
   justify-content: center;
   font-size: 26px;
-  background-color: var(--octonary-color);
-  color: #000000;
+  background-color: var(--secondary-color);
+  color: var(--white);
 }
 .color-palate .color-icon .close-color {
   display: none;
@@ -62,8 +62,8 @@
 .color-palate ul li {
   cursor: pointer;
   padding: 12px 0px;
-  background-color: #fff0dc;
-  color: #000000;
+  background-color: var(--tertiary-color);
+  color: var(--white);
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -72,14 +72,14 @@
   transition: all 0.3s ease;
 }
 .color-palate ul li:hover {
-  background-color: var(--octonary-color);
-  color: #000000;
+  background-color: var(--secondary-color);
+  color: var(--white);
 }
 .color-palate ul .active {
-  background-color: var(--octonary-color);
+  background-color: var(--secondary-color);
 }
 .color-palate ul .active:hover {
-  background-color: var(--octonary-color);
+  background-color: var(--secondary-color);
 }
 .color-palate .group {
   margin-bottom: 40px;
