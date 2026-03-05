@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -56,8 +56,8 @@ responsive web developer, html css javascript developer
     content="https://venkateshseenu.netlify.app/assets/images/banner/profile-portfolio-venkatesh.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:wght@100..900&display=swap"
-    rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/css/all.min.css">
   <link rel="stylesheet" href="assets/fonts/css/tabler-icons.min.css">
@@ -70,8 +70,9 @@ responsive web developer, html css javascript developer
   <link rel="stylesheet" href="assets/css/rtl-version.css">
   <link rel="stylesheet" href="assets/css/light-mode.css">
   <link rel="stylesheet" href="assets/css/template-settings.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="preload" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css"></noscript>
   <style>
     /* Say Hi Modal Styles */
     .say-hi-modal {
@@ -186,8 +187,12 @@ responsive web developer, html css javascript developer
 }
 </script>
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <!--  Performance: Preload critical hero image for LCP -->
+  <link rel="preload" href="assets/images/banner/VENKATESH-PORTFOLIO.webp" as="image" fetchpriority="high">
+  <!-- Preconnect to CDNs early -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 </head>
 
 <body>
@@ -226,8 +231,7 @@ responsive web developer, html css javascript developer
             <div class="main-header__menu-box">
               <nav class="navbar p-0">
                 <div class="navbar-logo">
-                  <a href="index.html"><img src="assets/images/banner/profile-portfolio-venkatesh.jpg"
-                      alt="venkatesh logo" style="width: 60px" class="img-fluid logo-ch" />
+                  <a href="index.html"><img src="assets/images/banner/profile-portfolio-venkatesh.jpg" alt="Venkatesh - Full Stack and Odoo Developer" width="60" height="60" style="width:60px;height:60px;object-fit:cover;border-radius:50%;" class="img-fluid logo-ch" loading="eager" decoding="async" />
                     <h6 class="secondary-text">VENKATESH</h6>
                   </a>
                 </div>
@@ -298,8 +302,7 @@ responsive web developer, html css javascript developer
                     <div class="col-12 col-md-7 col-lg-7 col-xl-6">
                       <div class="hero-two__inner">
                         <div class="hero-two__content fade-up">
-                          <span class="tertiary-text text-uppercase sub-title fw-3 neutral-top">HOWDY! <img
-                              src="assets/images/hand.png" alt="Waving Hand" /> I'M VENKATESH</span>
+                          <span class="tertiary-text text-uppercase sub-title fw-3 neutral-top">HOWDY! <img src="assets/images/hand.png" alt="Waving Hand" loading="lazy" decoding="async" width="48" height="48" /> I'M VENKATESH</span>
                           <h1 class="title-xl title-animation fw-7 text-uppercase mt-20">Web & Odoo <span
                               class="secondary-text">Developer</span></h1>
                           <p class="text-xl primary-text mt-20">Web and Odoo developer with experience in ERP
@@ -424,8 +427,7 @@ responsive web developer, html css javascript developer
                 <div class="hero-two__group mt-5">
                   <div class="hero-two__left fade-up">
                     <div class="left-thumb">
-                      <a href="our-projects.html"><img loading="lazy" src="assets/images/banner/text_vector.webp"
-                          alt="" /></a>
+                      <a href="our-projects.html"><img loading="lazy" decoding="async" src="assets/images/banner/text_vector.webp" alt="" width="300" height="80" /></a>
                     </div>
                   </div>
                 </div>
@@ -622,22 +624,22 @@ responsive web developer, html css javascript developer
       </svg>
     </button>
   </div>
-  <script src="assets/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/jquery.nice-select.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/swiper-bundle.min.js"></script>
-  <script src="assets/js/viewport.jquery.js"></script>
-  <script src="assets/js/odometer.min.js"></script>
-  <script src="assets/js/vanilla-tilt.min.js"></script>
-  <script src="assets/js/phosphor-icon.js"></script>
-  <script src="assets/js/ScrollTrigger.min.js"></script>
-  <script src="assets/js/SplitText.min.js"></script>
-  <script src="assets/js/ScrollToPlugin.min.js"></script>
-  <script src="assets/js/ScrollSmoother.min.js"></script>
-  <script src="assets/js/gsap.min.js"></script>
-  <script src="assets/js/chroma.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/jquery-3.7.1.min.js" defer></script>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/jquery.nice-select.min.js" defer></script>
+  <script src="assets/js/jquery.magnific-popup.min.js" defer></script>
+  <script src="assets/js/swiper-bundle.min.js" defer></script>
+  <script src="assets/js/viewport.jquery.js" defer></script>
+  <script src="assets/js/odometer.min.js" defer></script>
+  <script src="assets/js/vanilla-tilt.min.js" defer></script>
+  <script src="assets/js/phosphor-icon.js" defer></script>
+  <script src="assets/js/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/SplitText.min.js" defer></script>
+  <script src="assets/js/ScrollToPlugin.min.js" defer></script>
+  <script src="assets/js/ScrollSmoother.min.js" defer></script>
+  <script src="assets/js/gsap.min.js" defer></script>
+  <script src="assets/js/chroma.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
   <div id="sayHiModal" class="say-hi-modal">
     <div class="say-hi-content">
       <h5>👋 Say Hi to Venkatesh?</h5>
@@ -648,7 +650,7 @@ responsive web developer, html css javascript developer
       </div>
     </div>
   </div>
-  <script src="assets/js/visitor-tracking.js"></script>
+  <script src="assets/js/visitor-tracking.js" defer></script>
 </body>
 
 </html>
