@@ -417,9 +417,15 @@
   .hero-two {
     padding-block: 220px 120px;
   }
+  .hero-two .hero-two__inner,
+  .hero-two .hero-two__content {
+    position: relative;
+    z-index: 2;
+  }
   .hero-two .hero-two-thumb {
     bottom: -120px;
     inset-inline-end: 0px;
+    z-index: 1;
   }
   .hero-three {
     padding-block: 260px 120px;
