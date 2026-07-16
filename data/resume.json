@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "name": "Venkatesh Seenu",
+    "firstName": "Venkatesh",
+    "lastName": "Seenu",
+    "title": "Frontend Developer",
+    "tagline": "I build scalable, responsive SaaS interfaces that load fast and ship faster.",
+    "location": "Puducherry, India",
+    "email": "venkateshseenu45@gmail.com",
+    "phone": "+91 75488 79400",
+    "website": "https://venkateshseenu.netlify.app",
+    "available": true
+  },
+
+  "socials": [
+    { "label": "LinkedIn", "handle": "in/iamvnki", "url": "https://linkedin.com/in/iamvnki" },
+    { "label": "GitHub", "handle": "venkateshseenu", "url": "https://github.com/venkateshseenu" },
+    { "label": "Portfolio", "handle": "venkateshseenu.netlify.app", "url": "https://venkateshseenu.netlify.app" },
+    { "label": "Email", "handle": "venkateshseenu45@gmail.com", "url": "mailto:venkateshseenu45@gmail.com" }
+  ],
+
+  "about": {
+    "headline": "Results-driven Frontend Developer with 1+ years building production SaaS.",
+    "body": [
+      "I build scalable, responsive SaaS platforms with React.js, JavaScript (ES6+), HTML5, CSS3 and REST APIs — the kind that real users log into every day, not demos.",
+      "So far that has meant production-grade dashboards, helpdesk systems and ERP customizations for international clients, delivering up to 30% faster load times and a 40% reduction in development cycles through reusable, component-based architecture and performance optimization."
+    ]
+  },
+
+  "stats": [
+    { "value": "1,000+", "label": "End users served", "detail": "Across BackupFlex and RaiseATicket, web and mobile." },
+    { "value": "~30%", "label": "Faster page loads", "detail": "Via render and asset-delivery optimization." },
+    { "value": "~40%", "label": "Less dev time", "detail": "From a reusable 25+ module component library." },
+    { "value": "90+", "label": "Lighthouse score", "detail": "Sustained on shipped production SaaS UIs." }
+  ],
+
+  "skills": [
+    {
+      "category": "Frontend",
+      "accent": "#FF6A1A",
+      "items": ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Bootstrap", "Responsive Design"]
+    },
+    {
+      "category": "APIs & Data",
+      "accent": "#FFB43F",
+      "items": ["REST APIs", "JSON"]
+    },
+    {
+      "category": "Tools & Platforms",
+      "accent": "#E03A0C",
+      "items": ["Claude CLI", "Windsurf", "Git", "GitHub", "VS Code", "Odoo ERP"]
+    },
+    {
+      "category": "Core Concepts",
+      "accent": "#FFD9A0",
+      "items": [
+        "Component-Based Architecture",
+        "State Management",
+        "Performance Optimization",
+        "Cross-Browser Compatibility",
+        "Clean Code"
+      ]
+    }
+  ],
+
+  "experience": [
+    {
+      "role": "Web Developer Trainee",
+      "company": "Outrise Technologies Pvt Ltd",
+      "period": "Nov 2024 — Present",
+      "current": true,
+      "summary": "Delivering scalable SaaS product interfaces and ERP customizations for international clients across frontend and full-stack integrations.",
+      "highlights": [
+        "Engineered responsive, production-grade UIs for two SaaS platforms (BackupFlex, RaiseATicket) using React.js, JavaScript (ES6+) and Bootstrap, serving 1,000+ end users across web and mobile.",
+        "Architected a reusable React component library of 25+ modules, cutting feature development time by ~40% and improving code maintainability across teams.",
+        "Optimized rendering and asset delivery, reducing initial page load times by ~30% and lifting Lighthouse performance scores above 90.",
+        "Integrated 20+ REST APIs to power real-time dashboards, ticket workflows and authentication flows across pre-login and post-login environments.",
+        "Customized Odoo 18 ERP modules (HR, Employee, Sales) and automated workflows via server actions, reducing manual operations by ~25%.",
+        "Resolved 50+ production tickets and collaborated with backend and QA teams to ship zero-downtime releases."
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "backupflex",
+      "index": "01",
+      "name": "BackupFlex",
+      "kind": "SaaS Dashboard",
+      "year": "2025",
+      "accent": "#FF6A1A",
+      "stack": ["React.js", "REST APIs", "Bootstrap"],
+      "summary": "Scalable backup-management SaaS with secure authentication and a data-rich product dashboard.",
+      "highlights": [
+        "Built a role-based login system and interactive dashboard in React.js, enabling secure access for 500+ business users.",
+        "Implemented reusable UI components for plan management, billing and backup configuration, reducing duplicate code by ~35%."
+      ],
+      "metrics": [
+        { "value": "500+", "label": "Business users" },
+        { "value": "~35%", "label": "Less duplicate code" }
+      ]
+    },
+    {
+      "id": "raiseaticket",
+      "index": "02",
+      "name": "RaiseATicket",
+      "kind": "Helpdesk Platform",
+      "year": "2025",
+      "accent": "#FFB43F",
+      "stack": ["PHP", "HTML", "Responsive Design"],
+      "summary": "Modular SaaS helpdesk focused on real-time ticket workflows and cross-device usability.",
+      "highlights": [
+        "Delivered a modular ticket-management UI in PHP, streamlining agent workflows and improving resolution turnaround.",
+        "Enhanced mobile UX with fully responsive layouts, improving mobile engagement by an estimated 25%."
+      ],
+      "metrics": [
+        { "value": "~25%", "label": "Mobile engagement" },
+        { "value": "Modular", "label": "Ticket UI architecture" }
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "institution": "Rajiv Gandhi Arts and Science College, Puducherry",
+      "year": "2024",
+      "detail": "CGPA 7.28 / 10"
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "Java Full Stack Development (DFJD)",
+      "issuer": "Computer Software College",
+      "grade": "Grade A"
+    },
+    {
+      "name": "Graphic Designing",
+      "issuer": "Balsam Creative Technology",
+      "grade": "Grade O"
+    }
+  ],
+
+  "reference": {
+    "name": "Kias Hanifa",
+    "role": "CTO",
+    "company": "Outrise Technologies Pvt Ltd",
+    "email": "k.hanifa@fonicom.com"
+  },
+
+  "sections": [
+    { "id": "hero", "label": "Home" },
+    { "id": "about", "label": "About" },
+    { "id": "skills", "label": "Skills" },
+    { "id": "experience", "label": "Experience" },
+    { "id": "projects", "label": "Work" },
+    { "id": "contact", "label": "Contact" }
+  ]
+}
