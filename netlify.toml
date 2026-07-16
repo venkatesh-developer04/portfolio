@@ -1,0 +1,32 @@
+# Netlify build configuration.
+#
+# This lives in the repo rather than only in the Netlify dashboard so the
+# settings travel with the code and cannot silently drift. What is set here
+# overrides the dashboard — which is the entire point here: this site's
+# dashboard still carries its static-era settings (no build command, publish =
+# the repo root), and those would publish this app's unbuilt source and serve
+# a 404. Leaving the dashboard to win would reproduce exactly the failure the
+# GitHub Pages workflow would have caused.
+
+[build]
+  command = "npm run build"
+
+  # `.next`, not the repo root and not `out/`.
+  #
+  # This app is NOT a static export, deliberately: /_next/image has to be
+  # served at runtime or two things break. The hero plate loads through
+  # next/image, and the site-wide smoke layer in globals.css points a CSS
+  # url() straight at /_next/image. Both would 404 under a static export, and
+  # next/image would fall back to shipping the raw 1.5MB PNG in place of a
+  # 42KB WebP. Netlify's Next.js runtime consumes .next and wires up the
+  # server, the image optimizer and the headers.
+  publish = ".next"
+
+[build.environment]
+  # Next 15 needs Node 18.18+. Pinned to 20 LTS so the build does not silently
+  # inherit whatever default Netlify moves to next.
+  NODE_VERSION = "20"
+
+# No [[plugins]] block on purpose. Netlify detects Next.js from package.json
+# and installs its Next.js runtime automatically; naming the plugin here as
+# well is a second source of truth that can pin a stale major.
