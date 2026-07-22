@@ -8,6 +8,7 @@ import { useLenis } from '@/hooks/useLenis';
 import { useQuality } from '@/hooks/useQuality';
 import { usePointer } from '@/hooks/usePointer';
 import Nav from '@/components/Nav';
+import CinematicFrame from '@/components/CinematicFrame';
 import Cursor from '@/components/Cursor';
 import Preloader from '@/components/Preloader';
 import ProjectModal from '@/components/ProjectModal';
@@ -54,6 +55,7 @@ export default function Shell() {
       <div className={cn('atmo', quality === 'off' && 'atmo--still')} aria-hidden="true" />
 
       <Nav />
+      <CinematicFrame />
 
       <main id="main" className="relative z-10">
         <Hero />

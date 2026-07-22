@@ -96,7 +96,15 @@ export default function About() {
 
           <motion.div style={drift(yBody)} className="space-y-6">
             {resume.about.body.map((paragraph, i) => (
-              <Paragraph key={i} text={paragraph} delay={i * 0.12} still={still} />
+              <Paragraph
+                key={i}
+                text={paragraph}
+                delay={i * 0.12}
+                still={still}
+                // The first paragraph is the lede and sets the section's
+                // voice; the rest support it. One flat size read as a wall.
+                lede={i === 0}
+              />
             ))}
           </motion.div>
 
@@ -165,9 +173,13 @@ const maskedVariants = {
  * on the <p> itself would never fire — leaving the paragraph invisible for
  * good. The span is never clipped, so it always triggers.
  */
-function Paragraph({ text, delay, still }) {
+function Paragraph({ text, delay, still, lede = false }) {
+  const cls = lede
+    ? 'text-xl leading-relaxed text-white/75 md:text-[1.6rem] md:leading-snug'
+    : 'text-lg leading-relaxed text-white/55 md:text-xl';
+
   if (still) {
-    return <p className="text-lg leading-relaxed text-white/55 md:text-xl">{text}</p>;
+    return <p className={cls}>{text}</p>;
   }
 
   return (
@@ -177,11 +189,7 @@ function Paragraph({ text, delay, still }) {
       whileInView="visible"
       viewport={{ once: true, margin: '-10% 0px' }}
     >
-      <motion.p
-        className="text-lg leading-relaxed text-white/55 md:text-xl"
-        variants={maskedVariants}
-        transition={{ duration: 1, delay, ease: EASE }}
-      >
+      <motion.p className={cls} variants={maskedVariants} transition={{ duration: 1, delay, ease: EASE }}>
         {text}
       </motion.p>
     </motion.span>
