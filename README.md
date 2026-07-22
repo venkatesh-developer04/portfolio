@@ -24,15 +24,18 @@ scene. The 3D objects are laid out as a vertical corridor in world space and
 the camera flies down it as you scroll:
 
 ```
- y    0   ▸  hero workspace    (x +2.2)   ← sections: hero, about
+ y    0   ▸  (empty)           — hero/about: the hero is a DOM photo plate;
+                                 only the ember particle field is here
  y  -12   ▸  skills orbit      (x +3.6)   ← sections: skills, experience
  y  -24   ▸  project cards     (x +3.9)   ← sections: projects, contact
 ```
 
 Every object is parked **right of centre**, which is why the copy sits left on
-`hero` / `skills` / `projects` and right on `about` / `experience` — the camera
-swings around each object rather than cutting to a new one. Two sections per
-object, viewed from opposite sides.
+`skills` / `projects` and right on `experience` — the camera swings around each
+object rather than cutting to a new one. Two sections per object, viewed from
+opposite sides. The hero and about stops are kept even though nothing lives
+there any more, so the corridor still *begins* above the orbit and the drop
+into it is a travelled move rather than a jump cut.
 
 This is why it's not a canvas-per-section: the *travel between* objects is the
 effect. Separate canvases can only cross-fade.
@@ -59,64 +62,85 @@ paragraph.
 
 ```
 app/          layout (fonts, metadata, JSON-LD), page, globals.css
-components/   Shell, Scene, Nav, Cursor, Preloader, ShatterV, ProjectModal
-  3d/         CameraRig, Rig (lighting), Workspace, SkillOrbit, ProjectCards, Particles
+components/   Shell, Scene, Nav, Cursor, Preloader, ProjectModal
+  3d/         CameraRig, Rig (lighting), SkillOrbit, ProjectCards, Particles
   sections/   Hero, About, Skills, Experience, Projects, Contact
   ui/         Reveal, SectionHeading
 data/         resume.json  ← single source of truth
 hooks/        useLenis, useQuality, usePointer, useMagnetic, useNearSection
-lib/          store, scroll, sections, audio, cardTexture, glyph, utils
+lib/          store, scroll, sections, audio, cardTexture, utils
+public/       hero-portrait.png (the plate), intro video
 ```
 
-### The intro
+(`components/ShatterV.jsx` and `lib/glyph.js` still exist on disk but nothing
+imports them — they belonged to the retired particle intro below and are kept
+only until their deletion is signed off.)
 
-`ShatterV` draws a "V" to an offscreen canvas, reads its alpha channel, and
-turns every opaque pixel on a grid into a particle (`lib/glyph.js`) — a real
-glyph silhouette from the font `next/font` already loaded, with no font binary
-to parse and no SDF text in the 3D scene. ~1,500 particles. The V lights
-bottom-to-top as the loading counter climbs, then bursts.
+### The intro (`components/Preloader.jsx`)
 
-Two things there are load-bearing:
+A ~10s cinematic video plays full-screen, then the intro ends on the video's
+**`ended` event** — not on a timer, and not on scene readiness. When it ends,
+the video dissolves to flat black and the black parts as two halves sliding
+left and right ("doors"), with an ember seam down the opening edge. The hero's
+own entrance is gated on `entered`, which fires as the doors *start* moving,
+so the copy and the plate rise into the widening gap.
 
-- **Scroll unlocks when the shatter *starts*, not when it ends.** The particles
-  fly over an already-live, scrollable page while the backdrop fades, so the
-  effect costs zero interactive time.
-- **The hero hands off from the intro.** `entered` fires the V's shatter, the
-  headline's masked reveal, *and* the workspace's assembly on the same frame —
-  the V's particles fly outward as the desk scales up from zero and the laptop
-  screen powers on late (`intro > 0.45`). The two effects answer each other
-  rather than just happening in sequence.
-- **The animation runs on accumulated *rendered* time, not wall-clock.**
-  Mounting the WebGL scene blocks the main thread hard (measured: a ~1.7s long
-  task, ~3.2s total). The first version faded on wall-clock elapsed while
-  moving particles on a clamped delta — so a stall left the particles barely
-  moved but jumped the fade straight to finished, and the whole shatter was
-  skipped in a single frame. Sharing one clamped clock means jank can delay the
-  animation but never eat it.
+Since a video that never ends would strand the reader, everything else in the
+file is a failure bound, not a timing choice:
 
-### The hero character (`components/3d/Workspace.jsx`)
+- a rejected `play()` promise (autoplay refused) bails to the site immediately;
+- a 3s start guard catches a dead asset (404, bad codec, no decodable frame);
+- a 25s hard ceiling catches a video that stalls forever mid-play — generous
+  enough that ordinary rebuffering is never guillotined;
+- `Skip intro` / Esc / Enter always work; reduced motion skips the video
+  entirely (a 10s forced video is exactly what that preference asks not to
+  get).
 
-A developer at a desk, built entirely from primitives — no `.glb`, no rig, no
-asset to license or download. Curly hair is a shell of ~42 small icosahedra
-placed on a Fibonacci sphere over the crown; positions derive from the index
-rather than `Math.random()` so the silhouette is identical on every reload.
-Typing is the forearms pivoting at the elbow, out of phase with each other.
+The loading counter reads the video's own playhead (`currentTime/duration`),
+so it is a real readout of the wait rather than a number racing a timer.
 
-Three things learned the hard way, all worth keeping:
+### The hero plate (`components/sections/Hero.jsx`)
 
-- **It is chibi-proportioned, and the props must match it, not reality.** A
-  correctly scaled 15" laptop beside a character with a 0.2-radius head is
-  enormous — the first pass hid his chest, chin and left arm behind the lid.
-- **The laptop faces him, not the camera.** A screen pointed at the viewer
-  looks striking until you notice he'd be staring at the back of his own
-  laptop. Turned around, the screen becomes a practical light throwing cool
-  tones onto his face — a better shot anyway.
-- **Cyan light on brown skin reads green.** The screen's colour is a soft blue
-  (`#8FD4FF`, not the brand cyan) and a warm key holds the skin tone.
+A full-bleed photographic plate (`public/hero-portrait.png`) sits behind the
+hero copy at 25% opacity, with a **torch**: a ~300px soft radial reveal that
+follows the pointer and shows the image at full strength. It is two stacked
+copies of the image — opacity cannot be applied to *part* of an element, so
+the top copy is full-strength behind a moving `mask-image` radial gradient.
+Both copies emit identical `next/image` srcsets, so the bytes are fetched
+once.
 
-Swapping in a real avatar later: drop a `.glb` in `public/`, load it with
-drei's `useGLTF`, and replace the `<group ref={model}>` contents. The intro
-gate, culling, pointer lean and camera framing all stay as they are.
+Pointer coords go through a ref and one rAF (`--mx`/`--my` CSS vars on the
+plate), never React state. Three cases get a flat 55% plate with no torch,
+because a torch that can never be summoned reads as a broken image: touch
+(`pointer: coarse`), reduced motion / quality `off` (`.plate--flat`), and the
+moment before the pointer first enters (`.is-lit` gate).
+
+The name/details columns flank a reserved centre column so text never lands on
+the subject's face. The centre column is capped in **px, not vw** — the shell
+is capped at 1152px, so a vw-sized column keeps growing with the monitor while
+the grid it lives in does not, and it crushed the name below its min-content
+width (an unwrappable "Venkatesh") on every desktop width.
+
+### The smoke (`.atmo` in `app/globals.css`)
+
+Two pseudo-element layers sample the smoke either side of the subject in the
+hero plate and screen-blend it over the WebGL canvas on every section, with a
+slow two-period "beat" (7s / 10.5s, deliberately out of phase). Three details
+are load-bearing:
+
+- It sits **above** the canvas: the canvas is opaque (`gl.alpha:false`), so a
+  layer behind it would never be seen — and making the canvas transparent
+  would break the fog dissolve, which works by matching the background colour
+  exactly. `screen` blending is what lets the 3D read through it.
+- The CSS `url()` points at the **`/_next/image` optimizer endpoint**, not the
+  raw file — a plain URL would bypass next/image and ship the 1.5MB source
+  PNG (the optimized fetch is ~42KB).
+- The base opacity/transform on the layers are the *resting frame*: the global
+  reduced-motion override collapses animations with no fill-mode, so elements
+  fall back to base styles — without them, reduced-motion users would get
+  full-strength unmirrored smoke. The nav's own "Reduce animation" toggle is
+  handled separately (`.atmo--still`), because a store write is invisible to a
+  media query.
 
 ### State is deliberately split in two
 
@@ -132,7 +156,7 @@ modal, quality tier) live in the store — which is ~40 lines and needs no
 dependency.
 
 > **Never call `useStore` inside the `<Canvas>`.** Read store values with
-> `getStore()` from inside `useFrame` instead (see `Workspace.jsx`). Subscribing
+> `getStore()` from inside `useFrame` instead. Subscribing
 > re-renders the component inside R3F's reconciler, which recreates its
 > material and recompiles the shader — mid-flight. Doing this in the hero object
 > locked the main thread permanently and hung the page. Writes (`setStore`) are
@@ -152,9 +176,10 @@ project adds a 3D card. Nothing is hardcoded in a component.
 `deviceMemory`:
 
 - `high` — full scene, scroll camera, DPR capped at 1.5
-- `low` — mobile/weak GPU: hero workspace only on a held camera, fewer hair
-  curls, no desk props, no orbit or cards, DPR 1.25
-- `off` — reduced motion: **no WebGL context at all**, CSS aurora backdrop
+- `low` — mobile/weak GPU: particle field only on a held camera, no orbit or
+  cards, DPR 1.25
+- `off` — reduced motion: **no WebGL context at all**, CSS forge-glow backdrop;
+  the smoke layer stays but its beat is frozen
 
 > The scene no longer uses `MeshTransmissionMaterial` anywhere. Replacing the
 > crystal with the workspace removed it, and with it the single most expensive
@@ -168,10 +193,14 @@ nav toggle; the choice persists in `localStorage`.
 
 ### Measured numbers (Intel Iris Xe, production build)
 
+> Measured on the earlier design, before the 3D workspace was replaced by the
+> DOM photo plate — the hero/about draw-call figures can only have gone *down*
+> since (that geometry no longer exists), but they have not been re-measured.
+
 | | |
 |---|---|
 | First contentful paint | ~680 ms (median of 5) |
-| First Load JS | 196 kB (three/drei code-split out of it) |
+| First Load JS | ~200 kB (three/drei code-split out of it) |
 | Draw calls / frame | 13 (hero) · 25 (skills) · 9 (projects) · **3** (contact) |
 | Triangles / frame | 6.2k · 8.6k · 2.6k · 4 |
 
@@ -216,17 +245,16 @@ at the tier level, and word-level (not character-level) headline reveals so
 npx vercel        # or: npx vercel --prod
 ```
 
-**Netlify** — `npm i -D @netlify/plugin-nextjs`, then `netlify.toml`:
+**Netlify** — a `netlify.toml` is already in the repo (build `npm run build`,
+publish `.next`, Node 20 pinned). No `[[plugins]]` block on purpose: Netlify
+detects Next.js and installs its runtime itself, and naming the plugin as well
+is a second source of truth that can pin a stale major.
 
-```toml
-[build]
-  command = "npm run build"
-  publish = ".next"
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-```
-
-Static export (`output: 'export'`) also works — there are no server routes.
+> **Static export (`output: 'export'`) no longer works.** It used to — but the
+> hero plate and the `.atmo` smoke both resolve through `/_next/image`, which
+> does not exist in an export. The smoke would silently vanish and next/image
+> would need `unoptimized: true`, shipping the raw 1.5MB PNG in place of a
+> ~42KB WebP. This site now requires a host that runs the image optimizer.
 
 ## Editing content
 

@@ -2,6 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import resume from '@/data/resume.json';
+import { useStore } from '@/lib/store';
+import { cn } from '@/lib/utils';
 import { useLenis } from '@/hooks/useLenis';
 import { useQuality } from '@/hooks/useQuality';
 import { usePointer } from '@/hooks/usePointer';
@@ -33,6 +35,13 @@ export default function Shell() {
   usePointer();
   useLenis(SECTION_IDS);
 
+  // Only for the smoke: OS-level reduced motion already freezes it via the
+  // global media query, but the nav's own "Reduce animation" toggle sets the
+  // store without touching any media query — and a pure-CSS animation cannot
+  // see the store. Without this class the one control that promises stillness
+  // would quiet everything except the smoke.
+  const quality = useStore((s) => s.quality);
+
   return (
     <>
       <Preloader />
@@ -42,7 +51,7 @@ export default function Shell() {
       {/* Site-wide smoke, screen-blended over the canvas. Purely atmospheric:
           never announced, never interactive. Sits at z-0 — above the canvas at
           -z-10, below the grain at z-1 and all copy at z-10. */}
-      <div className="atmo" aria-hidden="true" />
+      <div className={cn('atmo', quality === 'off' && 'atmo--still')} aria-hidden="true" />
 
       <Nav />
 

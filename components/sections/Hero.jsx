@@ -156,7 +156,16 @@ export default function Hero() {
          * never land on his face. It carries no content, so it is hidden from
          * the accessibility tree.
          */}
-        <div className="grid items-center gap-y-10 lg:grid-cols-[1fr_minmax(200px,26vw)_1fr] lg:gap-x-8">
+        {/*
+         * The centre column is capped in px, NOT vw. The shell is capped at
+         * 1152px, so a vw-sized centre keeps growing with the monitor while
+         * the grid it lives in does not — at 1920w a 26vw centre demanded
+         * 499px of a 1072px grid and crushed the name columns below the
+         * min-content width of "Venkatesh", which cannot wrap. Grid tracks
+         * refuse to shrink below min-content, so the whole grid overflowed
+         * and the section's overflow-hidden clipped the right column's edge.
+         */}
+        <div className="grid items-center gap-y-10 lg:grid-cols-[1fr_minmax(200px,320px)_1fr] lg:gap-x-8">
           {/*
            * Left: the name. No `order` on any of these three — the DOM order is
            * already name / spacer / details, and grid follows it. An explicit
@@ -164,7 +173,7 @@ export default function Hero() {
            * previously sorted the spacer into the left column and squeezed the
            * name into the narrow centre one, on top of the subject's face.
            */}
-          <motion.div style={layer(yCopy)}>
+          <motion.div style={layer(yCopy)} className="min-w-0">
             <motion.div {...rise(0.15)} className="mb-6 flex items-center gap-3">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inset-0 rounded-full bg-ember-brand" />
@@ -175,7 +184,11 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="display text-[15vw] leading-[0.86] drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)] sm:text-[11vw] lg:text-[6rem]">
+            {/* clamp, not a fixed 6rem: the upper bound is what "Venkatesh"
+                measures at the widest the side column can ever be (~344px
+                inside the capped shell). A fixed 6rem set the word wider than
+                the column at every desktop width. */}
+            <h1 className="display text-[15vw] leading-[0.86] drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)] sm:text-[11vw] lg:text-[clamp(3.25rem,5vw,4.5rem)]">
               <Line delay={0.16} entered={entered} still={still}>
                 {resume.meta.firstName}
               </Line>
@@ -190,7 +203,7 @@ export default function Hero() {
 
           {/* Right: the details, right-aligned back against the margin so the
               two columns read as bookends either side of the subject. */}
-          <motion.div style={layer(yCopy)} className="lg:text-right">
+          <motion.div style={layer(yCopy)} className="min-w-0 lg:text-right">
             <motion.div {...rise(0.52)} className="flex items-center gap-4 lg:justify-end">
               {/* The rule flips direction with the alignment: it must always
                   fade AWAY from the text it introduces, so on the right-aligned

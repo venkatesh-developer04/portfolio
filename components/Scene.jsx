@@ -1,8 +1,8 @@
 'use client';
 
-import { Suspense, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useStore, setStore, getStore } from '@/lib/store';
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { useStore } from '@/lib/store';
 import CameraRig from '@/components/3d/CameraRig';
 import Rig from '@/components/3d/Rig';
 import SkillOrbit from '@/components/3d/SkillOrbit';
@@ -16,29 +16,12 @@ import Particles from '@/components/3d/Particles';
  * between objects laid out in one continuous world, so there is exactly one
  * scene graph and one WebGL context for the entire page.
  */
-/**
- * Reports the moment the scene has drawn its second frame — by then shaders
- * are compiled and the env map is baked, so the intro can lift knowing the
- * page behind it is actually live rather than guessing with a timer.
- */
-function ReadySignal() {
-  useFrame((state) => {
-    if (state.clock.elapsedTime > 0 && !getStore().sceneReady) {
-      setStore({ sceneReady: true });
-    }
-  });
-  return null;
-}
-
 export default function Scene() {
   const quality = useStore((s) => s.quality);
 
   // Reduced motion / opted out — no WebGL context at all, CSS backdrop instead.
-  // Nothing will ever render a frame, so release the intro's readiness gate.
-  useEffect(() => {
-    if (quality === 'off') setStore({ sceneReady: true });
-  }, [quality]);
-
+  // (No readiness signalling any more: the intro is gated by its video's
+  // `ended` event, so nothing waits on the scene's first frame.)
   if (quality === 'off') {
     return (
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -73,7 +56,6 @@ export default function Scene() {
         <fog attach="fog" args={['#080605', 11, 27]} />
 
         <Suspense fallback={null}>
-          <ReadySignal />
           <Rig quality={quality} />
 
           {/* Scroll camera only where the corridor exists. On 'low' the camera

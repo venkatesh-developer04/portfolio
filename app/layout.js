@@ -34,11 +34,16 @@ export const metadata = {
     title: `${resume.meta.name} — ${resume.meta.title}`,
     description: resume.meta.tagline,
     siteName: `${resume.meta.name} Portfolio`,
+    // The hero plate, at its native 1376×768 — near enough the 1.91:1 the
+    // large-card crop wants. Without an image here, `summary_large_image`
+    // below was a promise with nothing behind it: shares rendered bare text.
+    images: [{ url: '/hero-portrait.png', width: 1376, height: 768 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${resume.meta.name} — ${resume.meta.title}`,
     description: resume.meta.tagline,
+    images: ['/hero-portrait.png'],
   },
   robots: { index: true, follow: true },
 };

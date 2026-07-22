@@ -294,6 +294,15 @@
     animation: atmo-beat-mirror 10.5s ease-in-out infinite;
   }
 
+  /* The nav's "Reduce animation" toggle (store quality:'off'). OS reduced
+     motion is handled by the global media query below; this handles the app's
+     own toggle, which no media query can see. The texture stays — the base
+     opacity/transform above are the resting frame — only the beat stops. */
+  .atmo--still::before,
+  .atmo--still::after {
+    animation: none;
+  }
+
   .grain::after {
     content: '';
     @apply pointer-events-none fixed inset-0 z-[1] opacity-[0.035];
