@@ -5,8 +5,10 @@ import { Canvas } from '@react-three/fiber';
 import { useStore } from '@/lib/store';
 import CameraRig from '@/components/3d/CameraRig';
 import Rig from '@/components/3d/Rig';
+import EmberGate from '@/components/3d/EmberGate';
 import SkillOrbit from '@/components/3d/SkillOrbit';
 import ProjectCards from '@/components/3d/ProjectCards';
+import EmberSparks from '@/components/3d/EmberSparks';
 import Particles from '@/components/3d/Particles';
 
 /**
@@ -62,15 +64,16 @@ export default function Scene() {
               holds on the hero and the DOM carries the rest. */}
           <CameraRig enabled={high} />
 
-          {/* The hero centrepiece is now the photographic plate in the DOM, so
-              the 3D workspace that used to sit at y 0 is gone. The corridor
-              still opens on empty space there by design — the particle field
-              carries the hero, and the camera flies down to the orbit. */}
+          {/* The hero centrepiece is the photographic plate in the DOM, so the
+              corridor opens on empty space at y 0 by design — the particle
+              field carries the hero, then the drop lands in the ember gate. */}
 
           {high && (
             <>
+              <EmberGate />
               <SkillOrbit quality={quality} />
               <ProjectCards quality={quality} />
+              <EmberSparks />
             </>
           )}
 

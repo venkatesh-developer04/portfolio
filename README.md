@@ -24,18 +24,23 @@ scene. The 3D objects are laid out as a vertical corridor in world space and
 the camera flies down it as you scroll:
 
 ```
- y    0   ▸  (empty)           — hero/about: the hero is a DOM photo plate;
+ y    0   ▸  (empty)           — hero: the hero is a DOM photo plate;
                                  only the ember particle field is here
- y  -12   ▸  skills orbit      (x +3.6)   ← sections: skills, experience
- y  -24   ▸  project cards     (x +3.9)   ← sections: projects, contact
+ y   -1   ▸  ember gate        (x 4 ± 3.1) ← about: pillars FLANK the copy
+ y  -12   ▸  skills orbit      (x +3.6)    ← sections: skills, experience
+ y  -24   ▸  project cards     (x +3.9)    ← sections: projects, contact
+ y  -30   ▸  ember sparks      (ambient)   ← contact: rising field behind copy
 ```
 
-Every object is parked **right of centre**, which is why the copy sits left on
-`skills` / `projects` and right on `experience` — the camera swings around each
-object rather than cutting to a new one. Two sections per object, viewed from
-opposite sides. The hero and about stops are kept even though nothing lives
-there any more, so the corridor still *begins* above the orbit and the drop
-into it is a travelled move rather than a jump cut.
+The orbit and cards are parked **right of centre**, which is why the copy sits
+left on `skills` / `projects` and right on `experience` — the camera swings
+around each object rather than cutting to a new one. The gate breaks that rule
+on purpose: About's copy is a centred column, so its camera squares up and the
+twin pillars flank the text the way the hero photograph frames its subject
+between two carved pillars. `EmberGate` and `EmberSparks` are that photo's
+stone and airborne embers restated as procedural geometry — primitives only,
+deterministic (index-seeded, no `Math.random()`), one instanced draw call each
+for the carvings/seams and the spark field.
 
 This is why it's not a canvas-per-section: the *travel between* objects is the
 effect. Separate canvases can only cross-fade.
@@ -63,7 +68,8 @@ paragraph.
 ```
 app/          layout (fonts, metadata, JSON-LD), page, globals.css
 components/   Shell, Scene, Nav, Cursor, Preloader, ProjectModal
-  3d/         CameraRig, Rig (lighting), SkillOrbit, ProjectCards, Particles
+  3d/         CameraRig, Rig (lighting), EmberGate, SkillOrbit, ProjectCards,
+              EmberSparks, Particles
   sections/   Hero, About, Skills, Experience, Projects, Contact
   ui/         Reveal, SectionHeading
 data/         resume.json  ← single source of truth

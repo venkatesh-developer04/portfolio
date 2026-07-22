@@ -11,14 +11,15 @@ import { clamp, easeInOutCubic, damp } from '@/lib/utils';
  * ── CAMERA TUNING TABLE ───────────────────────────────────────────────────
  * One keyframe per section, indexed to match resume.json `sections`.
  *
- * The scene is a vertical corridor in world space, with every object parked
- * right of centre (x ≈ +2.2) so the DOM copy has the left:
+ * The scene is a vertical corridor in world space:
  *   y   0  → hero            — EMPTY. The hero centrepiece is a photographic
  *                              plate in the DOM; only the particle field is
  *                              here. The stop is kept so the corridor still
- *                              begins above the orbit and flies down into it.
- *   y -12  → skills orbit      (x +3.6, it is the widest object)
- *   y -24  → project cards     (x +3.9, the pair is wide)
+ *                              begins above the gate and flies down into it.
+ *   y  -1  → ember gate       (x 4, pillars at ±3.1 — flanks centred copy)
+ *   y -12  → skills orbit     (x +3.6, parked right so the legend has the left)
+ *   y -24  → project cards    (x +3.9, the pair is wide)
+ *   y -30  → ember sparks     (ambient field behind the centred contact copy)
  *
  * Each object is visited twice from different angles. Framing follows from
  * where the camera sits *relative to the object's x*:
@@ -31,9 +32,12 @@ import { clamp, easeInOutCubic, damp } from '@/lib/utils';
 const STOPS = [
   // hero — nothing to frame any more; this is just the corridor's start height.
   { pos: [0.0, 0.15, 7.6], look: [1.0, 0.0, 0] },
-  // about — also empty since the desk went. Retained as an intermediate so the
-  // drop from hero to the orbit is a travelled move rather than a jump cut.
-  { pos: [6.6, -1.4, 6.4], look: [4.0, -0.6, 0] },
+  // about — square up on the ember gate, dead centre. Unlike every other stop
+  // this one does NOT park its object off to a side: the About copy is a
+  // centred column, and the gate's pillars flank it (x 4 ± 3.1) the way the
+  // hero photograph frames its subject between two pillars. The old swung-out
+  // framing would put one pillar behind the text and lose the doorway read.
+  { pos: [4.0, -1.3, 8.4], look: [4.0, -1.1, 0] },
   // skills — drop into the orbit from its left → orbit right, legend left
   { pos: [0.6, -12.0, 8.8], look: [1.6, -12.0, 0] },
   // experience — swing right past the orbit → orbit hangs left, copy right
