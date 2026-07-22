@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import resume from '@/data/resume.json';
 import TorchEmbers from '@/components/TorchEmbers';
+import SpinBadge from '@/components/ui/SpinBadge';
 import { useStore } from '@/lib/store';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import { scrollToSection } from '@/hooks/useLenis';
@@ -194,11 +195,19 @@ export default function Hero() {
                 inside the capped shell). A fixed 6rem set the word wider than
                 the column at every desktop width. */}
             <h1 className="display text-[15vw] leading-[0.86] drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)] sm:text-[11vw] lg:text-[clamp(3.25rem,5vw,4.5rem)]">
+              {/* data-text feeds the glitch pseudos their copy — they render
+                  ember/gold ghosts of the exact same string. The lastName's
+                  gradient-text lives on the Line, not the glitch span, so the
+                  pseudos keep their own solid colours. */}
               <Line delay={0.16} entered={entered} still={still}>
-                {resume.meta.firstName}
+                <span className="glitch" data-text={resume.meta.firstName}>
+                  {resume.meta.firstName}
+                </span>
               </Line>
               <Line delay={0.26} entered={entered} still={still} className="gradient-text">
-                {resume.meta.lastName}
+                <span className="glitch" data-text={resume.meta.lastName}>
+                  {resume.meta.lastName}
+                </span>
               </Line>
             </h1>
           </motion.div>
@@ -266,6 +275,22 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Spinning sticker — bottom-right, clear of the frame's ticks. Outer
+          layer fades with scroll, inner runs the entrance: opacity has one
+          writer per element, never two. */}
+      <motion.div
+        style={still ? undefined : { opacity: cueFade }}
+        className="absolute bottom-16 right-12 hidden lg:block"
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={entered ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
+          transition={{ duration: 0.9, delay: 1.1, ease: EASE }}
+        >
+          <SpinBadge />
+        </motion.div>
+      </motion.div>
 
       {/* Scroll affordance — first thing to go once you actually scroll. */}
       <motion.div

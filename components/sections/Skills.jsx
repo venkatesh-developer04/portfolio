@@ -49,7 +49,7 @@ export default function Skills() {
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => {
+                    {group.items.map((item, i) => {
                       // The 3D scene and this legend share one hover state, so
                       // pointing at a node lights up its chip and vice versa.
                       const isActive = hoveredSkill === item;
@@ -58,6 +58,11 @@ export default function Skills() {
                           key={item}
                           className={cn(
                             'rounded-full border px-3.5 py-1.5 text-[13px] transition-all duration-300',
+                            // Sticker physics: chips pop and cock over on
+                            // hover, alternating lean so a row scrubbed along
+                            // scatters rather than saluting in unison.
+                            i % 2 === 0 ? 'hover:-rotate-3' : 'hover:rotate-3',
+                            'hover:scale-110',
                             isActive
                               ? 'border-white/40 bg-white/10 text-white'
                               : 'border-white/[0.08] bg-white/[0.02] text-white/50',

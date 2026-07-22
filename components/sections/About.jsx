@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import resume from '@/data/resume.json';
 import SectionHeading from '@/components/ui/SectionHeading';
+import Marquee from '@/components/ui/Marquee';
 import { useStore } from '@/lib/store';
 import { useTilt } from '@/hooks/useTilt';
 
@@ -65,6 +66,15 @@ export default function About() {
       id="about"
       className="relative flex min-h-screen items-center py-32"
     >
+      {/* The tape rides the hero→about seam, INSIDE this section on purpose —
+          see Marquee.jsx for why a between-sections gap teleports the camera. */}
+      <Marquee
+        className="top-4 -rotate-[1.2deg]"
+        items={[
+          ...resume.skills[0].items.slice(0, 4),
+          ...resume.stats.map((s) => s.value + ' ' + s.label),
+        ]}
+      />
       {/* Ambient ember field. Purely atmospheric, so it must never eat pointer
           events or be announced. */}
       {!still && (

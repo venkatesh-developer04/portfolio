@@ -9,6 +9,7 @@ import { useQuality } from '@/hooks/useQuality';
 import { usePointer } from '@/hooks/usePointer';
 import Nav from '@/components/Nav';
 import CinematicFrame from '@/components/CinematicFrame';
+import SkewOnScroll from '@/components/SkewOnScroll';
 import Cursor from '@/components/Cursor';
 import Preloader from '@/components/Preloader';
 import ProjectModal from '@/components/ProjectModal';
@@ -58,12 +59,16 @@ export default function Shell() {
       <CinematicFrame />
 
       <main id="main" className="relative z-10">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
+        {/* Full tier only: skewing the page rasterises a document-sized layer,
+            which is exactly the kind of cost the low tier exists to refuse. */}
+        <SkewOnScroll enabled={quality === 'high'}>
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Contact />
+        </SkewOnScroll>
       </main>
 
       <ProjectModal />

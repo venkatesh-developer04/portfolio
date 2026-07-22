@@ -2,6 +2,7 @@
 
 import resume from '@/data/resume.json';
 import Reveal, { RevealWords } from '@/components/ui/Reveal';
+import Marquee from '@/components/ui/Marquee';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import { play } from '@/lib/audio';
 
@@ -15,6 +16,18 @@ export default function Contact() {
       id="contact"
       className="relative flex min-h-screen flex-col justify-between py-32"
     >
+      {/* Counter-rotated and reversed against the About tape, so the two
+          bands read as a pair of directions rather than a repeated trick. */}
+      <Marquee
+        reverse
+        className="top-6 rotate-[1.2deg]"
+        items={[
+          'Available for work',
+          resume.meta.title,
+          resume.meta.email,
+          resume.meta.location,
+        ]}
+      />
       <div className="shell flex flex-1 items-center">
         <div className="text-scrim mx-auto max-w-3xl text-center">
           <Reveal>

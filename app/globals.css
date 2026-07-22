@@ -303,6 +303,56 @@
     animation: none;
   }
 
+  /*
+   * Marquee tape. Two identical copies of the row inside a max-content track;
+   * animating to -50% loops seamlessly because the second copy is exactly
+   * where the first began. Reduced motion freezes the track via the global
+   * override — a static strip of type, still legible, no longer a treadmill.
+   */
+  .marquee__track {
+    display: inline-flex;
+    width: max-content;
+    animation: marquee 26s linear infinite;
+  }
+  .marquee__track--reverse {
+    animation-direction: reverse;
+  }
+
+  /*
+   * Glitch type. The pseudos are full copies of the text (content:attr) in
+   * ember and gold, hidden at rest — they spasm visible for ~150ms every few
+   * seconds on desynced clocks (3.9s vs 5.3s, so the double-hit is rare and
+   * unpredictable), and go rapid while hovered. Base opacity 0 is what makes
+   * the reduced-motion override safe: animations collapse, pseudos vanish,
+   * the name is just a name.
+   */
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .glitch::before {
+    color: #ff6a1a;
+    animation: glitch-a 3.9s steps(1, end) infinite;
+  }
+  .glitch::after {
+    color: #ffb43f;
+    animation: glitch-b 5.3s steps(1, end) infinite;
+  }
+  .glitch:hover::before {
+    animation-duration: 0.5s;
+  }
+  .glitch:hover::after {
+    animation-duration: 0.7s;
+  }
+
   .grain::after {
     content: '';
     @apply pointer-events-none fixed inset-0 z-[1] opacity-[0.035];
@@ -319,6 +369,59 @@
  * a separate `transform: scaleX(-1)` on the element would be silently dropped
  * the moment the animation started and the layer would snap unflipped.
  */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mostly nothing: the spasm lives in a ~3% window of each cycle. */
+@keyframes glitch-a {
+  0%,
+  92%,
+  100% {
+    opacity: 0;
+    transform: none;
+    clip-path: none;
+  }
+  92.5% {
+    opacity: 0.85;
+    transform: translate(-6px, 2px);
+    clip-path: inset(8% 0 58% 0);
+  }
+  94% {
+    opacity: 0.85;
+    transform: translate(5px, -2px);
+    clip-path: inset(62% 0 6% 0);
+  }
+  95.5% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-b {
+  0%,
+  95%,
+  100% {
+    opacity: 0;
+    transform: none;
+    clip-path: none;
+  }
+  95.5% {
+    opacity: 0.7;
+    transform: translate(5px, 3px);
+    clip-path: inset(38% 0 30% 0);
+  }
+  97% {
+    opacity: 0.7;
+    transform: translate(-4px, -3px);
+    clip-path: inset(70% 0 2% 0);
+  }
+  98.5% {
+    opacity: 0;
+  }
+}
+
 @keyframes atmo-beat {
   0%,
   100% {
