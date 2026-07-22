@@ -4,6 +4,8 @@ import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useNearSection } from '@/hooks/useNearSection';
+import { scrollRef } from '@/lib/scroll';
+import { damp } from '@/lib/utils';
 
 /**
  * The ember gate — twin carved stone pillars flanking the About copy.
@@ -51,18 +53,29 @@ export default function EmberGate() {
   // cull stops paying draw calls for it once the camera has flown to skills.
   const near = useNearSection(1, 1.9);
   const seamMat = useRef(null);
+  const lightRef = useRef(null);
   const grooveRef = useRef(null);
   const seamRef = useRef(null);
+  const stoke = useRef(0);
 
   // Instance matrices are static — written once, never per frame.
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
-  useFrame((state) => {
+  useFrame((state, dt) => {
+    // Scroll stokes the fire: flying past the gate fans the seams the way
+    // rushing air fans embers, then the glow settles as the camera settles.
+    // Damped both ways so a single wheel-tick flickers rather than strobes.
+    const gust = Math.min(Math.abs(scrollRef.velocity) * 0.015, 1);
+    stoke.current = damp(stoke.current, gust, 2.5, Math.min(dt, 0.1));
+
     // The breathe: one shared material, one uniform, whole gate pulses as one
     // fire. Slow and shallow on purpose — embers, not a hazard light.
     if (seamMat.current) {
       seamMat.current.emissiveIntensity =
-        1.5 + Math.sin(state.clock.elapsedTime * 0.9) * 0.45;
+        1.5 + Math.sin(state.clock.elapsedTime * 0.9) * 0.45 + stoke.current * 2.4;
+    }
+    if (lightRef.current) {
+      lightRef.current.intensity = 5 + stoke.current * 7;
     }
 
     // Lay the instances out on first frame (refs are null during render).
@@ -142,8 +155,16 @@ export default function EmberGate() {
       </instancedMesh>
 
       {/* The fire between the pillars — what actually lights the stone. Low
-          and slightly behind, so the grooves catch it as rim rather than key. */}
-      <pointLight position={[0, -1.4, -0.8]} color={EMBER} intensity={5} distance={8} decay={2} />
+          and slightly behind, so the grooves catch it as rim rather than key.
+          Intensity rides the stoke above. */}
+      <pointLight
+        ref={lightRef}
+        position={[0, -1.4, -0.8]}
+        color={EMBER}
+        intensity={5}
+        distance={8}
+        decay={2}
+      />
     </group>
   );
 }

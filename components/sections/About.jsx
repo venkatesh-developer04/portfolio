@@ -5,6 +5,7 @@ import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import resume from '@/data/resume.json';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { useStore } from '@/lib/store';
+import { useTilt } from '@/hooks/useTilt';
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -195,6 +196,13 @@ function Paragraph({ text, delay, still }) {
  * once would pull the eye off the copy for as long as the section is open.
  */
 function Stat({ stat, index, still }) {
+  // Tilt lives on the inner wrapper, NOT the motion.div: framer writes the
+  // entrance transform on the outer element, and gsap writing rotation to the
+  // same node would clobber it mid-animation (and vice versa). Separate
+  // elements, separate transforms, no fight. The tile's background stays flat
+  // while the numbers lean — which reads as the content floating in the tile.
+  const tilt = useTilt(5);
+
   // The tile drives both itself and the sweep through variants. The sweep
   // parks at -left-full, i.e. fully outside its overflow-hidden parent, so a
   // whileInView on the sweep itself would never fire — clipped elements do not
@@ -227,7 +235,7 @@ function Stat({ stat, index, still }) {
         />
       )}
 
-      <div className="relative">
+      <div ref={tilt} className="relative h-full">
         <Counter value={stat.value} />
         <div className="mt-2 text-[11px] uppercase tracking-[0.12em] text-white/35">
           {stat.label}

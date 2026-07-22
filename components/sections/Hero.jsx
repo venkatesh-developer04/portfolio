@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import resume from '@/data/resume.json';
+import TorchEmbers from '@/components/TorchEmbers';
 import { useStore } from '@/lib/store';
 import { useMagnetic } from '@/hooks/useMagnetic';
 import { scrollToSection } from '@/hooks/useLenis';
@@ -147,6 +148,10 @@ export default function Hero() {
             on a hard horizontal edge at the section boundary. */}
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink-950 to-transparent" />
       </motion.div>
+
+      {/* Sparks shed by the torch — painted above the plate, below the copy
+          (plain DOM order does the stacking; nothing here needs z-index). */}
+      {!still && <TorchEmbers host={section} />}
 
       {/* ── Overlaid copy ────────────────────────────────────────────────── */}
       <div className="shell relative">
